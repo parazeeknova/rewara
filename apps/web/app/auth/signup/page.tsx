@@ -1,6 +1,6 @@
 'use client';
+
 import { cn } from '@rewara/ui/lib/utils';
-import { Checkbox } from '@rewara/ui/shadui/checkbox';
 import { Input } from '@rewara/ui/shadui/input';
 import { Label } from '@rewara/ui/shadui/label';
 import {
@@ -14,7 +14,7 @@ import { useState } from 'react';
 import type React from 'react';
 import { toast } from 'sonner';
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,21 +23,36 @@ export default function LoginPage() {
 
     try {
       const formData = new FormData(e.currentTarget);
-      const result = await signIn('credentials', {
+      const firstName = formData.get('firstname') as string;
+      const lastName = formData.get('lastname') as string;
+
+      const data = {
+        name: `${firstName} ${lastName}`.trim(),
         email: formData.get('email') as string,
         password: formData.get('password') as string,
-        redirect: false,
+      };
+
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
 
-      if (result?.error) {
-        toast.error('Invalid credentials');
-        return;
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
       }
 
-      toast.success('Logged in successfully');
-      window.location.href = '/';
-    } catch {
-      toast.error('Failed to login');
+      toast.success('Account created successfully');
+      await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        callbackUrl: '/',
+      });
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : 'Failed to create account'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -45,18 +60,40 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-black p-4">
-      <div className="mx-auto w-full max-w-md rounded-none border border-neutral-300 bg-white p-4 shadow-input md:rounded-2xl md:p-8 dark:border-neutral-700 dark:bg-black">
+      <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-input outline outline-neutral-300 md:rounded-2xl md:p-8 dark:bg-black dark:outline-neutral-700">
         <h2 className="font-bold text-neutral-800 text-xl dark:text-neutral-200">
-          Welcome back
+          Create your account
         </h2>
         <p className="mt-2 max-w-sm text-neutral-600 text-sm dark:text-neutral-300">
-          New to our platform?{' '}
-          <Link href="/auth/signup" className="text-primary hover:underline">
-            Create an account
+          Join us today! Already have an account?{' '}
+          <Link href="/auth/login" className="text-primary hover:underline">
+            Sign in
           </Link>
         </p>
 
         <form className="my-8" onSubmit={handleSubmit}>
+          <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
+            <LabelInputContainer>
+              <Label htmlFor="firstname">First name</Label>
+              <Input
+                id="firstname"
+                name="firstname"
+                placeholder="cool"
+                type="text"
+                required
+              />
+            </LabelInputContainer>
+            <LabelInputContainer>
+              <Label htmlFor="lastname">Last name</Label>
+              <Input
+                id="lastname"
+                name="lastname"
+                placeholder="user"
+                type="text"
+                required
+              />
+            </LabelInputContainer>
+          </div>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>
             <Input
@@ -67,7 +104,7 @@ export default function LoginPage() {
               required
             />
           </LabelInputContainer>
-          <LabelInputContainer className="mb-4">
+          <LabelInputContainer className="mb-8">
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
@@ -78,27 +115,12 @@ export default function LoginPage() {
             />
           </LabelInputContainer>
 
-          <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="remember" />
-              <Label htmlFor="remember" className="text-sm">
-                Remember me
-              </Label>
-            </div>
-            <Link
-              href="/auth/forgot-password"
-              className="text-primary text-sm hover:underline"
-            >
-              Forgot password?
-            </Link>
-          </div>
-
           <button
             className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="submit"
             disabled={isLoading}
           >
-            {isLoading ? 'Signing in...' : 'Sign in →'}
+            {isLoading ? 'Creating account...' : 'Sign up →'}
             <BottomGradient />
           </button>
 
