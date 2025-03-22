@@ -5,7 +5,8 @@
     "ignore": [
       "packages/ui/styles/**",
       ".vscode/extensions.json",
-      ".vscode/settings.json"
+      ".vscode/settings.json",
+      "packages/ui/shadui/**"
     ]
   },
   "linter": {
