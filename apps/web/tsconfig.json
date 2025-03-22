@@ -1,18 +1,10 @@
 {
   "extends": "@rewara/config/nextjs.config.json",
   "compilerOptions": {
-    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@root/*": [
-        "./*"
-      ],
-      "@assets/*": [
-        "./assets/*"
-      ]
+      "@/*": ["./src/*"],
+      "@root/*": ["./*"]
     }
   },
   "include": [
@@ -23,7 +15,5 @@
     "./assets/**/*",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-// biome-ignore lint/correctness/noUnusedImports: temp fix
-import React = require('react');
 
 export default function Home() {
   return (
