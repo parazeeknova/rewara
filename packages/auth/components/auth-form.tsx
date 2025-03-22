@@ -7,9 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@rewara/ui/shadui/card';
+import { useSearchParams } from 'next/navigation';
 import { OAuthButtons } from './oauth-buttons';
 
 export function AuthForm() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
       <Card className="w-full max-w-md shadow-xl">
@@ -22,7 +26,7 @@ export function AuthForm() {
           </p>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <OAuthButtons />
+          <OAuthButtons callbackUrl={callbackUrl} />
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
