@@ -1,0 +1,10 @@
+{
+  "name": "@rewara/config",
+  "description": "Configuration package contains shared configs for typescript",
+  "license": "AGPL-3.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  }
+}

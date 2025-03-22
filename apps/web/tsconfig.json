@@ -1,17 +1,26 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@rewara/config/nextjs.config.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@root/*": [
+        "./*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ]
+    }
   },
   "include": [
+    "next-env.d.ts",
+    "next.config.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.js",
+    "./assets/**/*",
     ".next/types/**/*.ts"
   ],
   "exclude": [

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "ignore": [
+      "packages/ui/styles/**",
+      ".vscode/extensions.json",
+      ".vscode/settings.json"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "useFilenamingConvention": "off"
+      },
+      "suspicious": {
+        "noConsole": "off",
+        "noConsoleLog": "off"
+      }
+    }
+  }
+}
