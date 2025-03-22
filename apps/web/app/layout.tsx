@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { DesignSystemProvider, SofiaProSoft } from '@rewara/ui';
+import { SofiaProSoft } from '@rewara/ui';
 import type { JSX, ReactNode } from 'react';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: 'Rewara',
@@ -17,8 +18,7 @@ const RootLayout = ({ children }: RootLayoutProperties): JSX.Element => (
     <body
       className={`${SofiaProSoft.variable} min-h-screen font-sofiaProSoft antialiased`}
     >
-      {/* @ts-expect-error */}
-      <DesignSystemProvider>{children}</DesignSystemProvider>
+      <Providers>{children}</Providers>
     </body>
   </html>
 );

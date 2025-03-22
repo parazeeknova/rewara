@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
-  // Enable page-level static exports
-  output: 'standalone',
-  experimental: {
-    // serverActions: true,
-    // typedRoutes: true,
+  transpilePackages: ['@prisma/client'],
+  webpack: (config: { externals: (string | RegExp)[] }) => {
+    config.externals = [...config.externals, '@prisma/client'];
+    return config;
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
