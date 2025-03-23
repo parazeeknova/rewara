@@ -14,9 +14,6 @@ COPY apps/web/package.json ./apps/web/
 COPY packages/config/package.json ./packages/config/
 COPY packages/db/package.json ./packages/db/
 
-COPY apps/web/postcss.config.js ./apps/web/
-COPY apps/web/tailwind.config.js ./apps/web/
-
 COPY packages/ ./packages/
 
 COPY pnpm-lock.yaml ./
