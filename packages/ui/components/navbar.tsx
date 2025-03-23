@@ -66,54 +66,38 @@ function Navbar({ className }: { className?: string }) {
           </Link>
 
           <div className="flex items-center space-x-4">
+
+            
             <MenuItem setActive={setActive} active={active} item="Services">
-              <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href="/web-dev">Web Development</HoveredLink>
-                <HoveredLink href="/interface-design">
-                  Interface Design
-                </HoveredLink>
-                <HoveredLink href="/seo">
-                  Search Engine Optimization
-                </HoveredLink>
-                <HoveredLink href="/branding">Branding</HoveredLink>
-              </div>
-            </MenuItem>
-            <MenuItem setActive={setActive} active={active} item="Products">
               <div className="grid grid-cols-2 gap-10 p-4 text-sm">
                 <ProductItem
-                  title="Algochurn"
+                  title="Business Analytics Dashboard"
                   href="https://algochurn.com"
                   src="https://assets.aceternity.com/demos/algochurn.webp"
-                  description="Prepare for tech interviews like never before."
+                  description="1.Sales Analytics 2.Customer Behavior 3.Reward Metrics 4.Sentiment Analysis"
+                  
                 />
                 <ProductItem
-                  title="Tailwind Master Kit"
+                  title="Customer Loyalty & Rewards System"
                   href="https://tailwindmasterkit.com"
                   src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                  description="Production ready Tailwind css components for your next project"
+                  description="1.Tiered Rewards 2.Personalized Recommendations 3.Dynamic Offers 4.Reward Tracking"
                 />
                 <ProductItem
-                  title="Moonbeam"
+                  title="Customer Feedback & Sentiment Analysis"
                   href="https://gomoonbeam.com"
                   src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                  description="Never write from scratch again. Go from idea to blog in minutes."
+                  description="1.Checkout Feedback 2.Sentiment Dashboard 3.Feedback Collection"
                 />
                 <ProductItem
-                  title="Rogue"
+                  title="Complaint Management System"
                   href="https://userogue.com"
                   src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                  description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                  description="1.Ticket System 2.Automated Resolutions 3.Resolution Analytics"
                 />
               </div>
             </MenuItem>
-            <MenuItem setActive={setActive} active={active} item="Pricing">
-              <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href="/hobby">Hobby</HoveredLink>
-                <HoveredLink href="/individual">Individual</HoveredLink>
-                <HoveredLink href="/team">Team</HoveredLink>
-                <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-              </div>
-            </MenuItem>
+            
             {status === 'authenticated' ? (
               <MenuItem
                 setActive={setActive}
