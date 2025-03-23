@@ -13,12 +13,16 @@ COPY package.json ./
 COPY apps/web/package.json ./apps/web/
 COPY packages/config/package.json ./packages/config/
 COPY packages/db/package.json ./packages/db/
+COPY packages/ui/package.json ./packages/ui/
 
-COPY packages/ ./packages/
+RUN find packages -name "package.json" -not -path "*/node_modules/*" | xargs -I{} dirname {} | xargs -I{} mkdir -p {}
+RUN find packages -name "package.json" -not -path "*/node_modules/*" | xargs -I{} cp {} {}
 
 COPY pnpm-lock.yaml ./
 
 RUN pnpm install
+
+COPY packages/ ./packages/
 
 FROM base AS development
 WORKDIR /app

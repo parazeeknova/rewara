@@ -95,6 +95,12 @@ function Navbar({ className }: { className?: string }) {
               </div>
             </MenuItem>
 
+            <MenuItem setActive={setActive} active={active} item="Dashboard">
+              <div className="flex flex-col space-y-4 text-sm">
+                <HoveredLink href="/dashboard">Dashboard</HoveredLink>
+              </div>
+            </MenuItem>
+
             {status === 'authenticated' ? (
               <MenuItem
                 setActive={setActive}

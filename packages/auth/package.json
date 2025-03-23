@@ -8,7 +8,7 @@
     "@rewara/db": "workspace:*",
     "@types/node": "^22.13.11",
     "next": "^15.2.3",
-    "typescript": "^5.8.2"
+    "typescript": "5.8.2"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.8.0",
