@@ -10,21 +10,27 @@ WORKDIR /app
 FROM base AS deps
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-workspace.yaml ./
+# Copy all workspace configuration files
+COPY pnpm-workspace.yaml ./
+COPY package.json ./
 COPY apps/web/package.json ./apps/web/
-COPY packages/*/package.json ./packages/*/
+COPY packages/config/package.json ./packages/config/
+COPY packages/db/package.json ./packages/db/
+
+# Copy the entire packages directory because we need the source files
+COPY packages/ ./packages/
 
 # Copy lockfile
 COPY pnpm-lock.yaml ./
 
+# Install dependencies
 RUN pnpm install
 
 # Builder
 FROM base AS builder
 WORKDIR /app
 
-# Copy all files
+# Copy all source files
 COPY . .
 
 # Copy node_modules from deps
@@ -44,7 +50,6 @@ RUN pnpm build --filter=web...
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
