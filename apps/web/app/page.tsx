@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
   );
 }
 
-export function HeroScroll(): JSX.Element {
+function HeroScroll(): JSX.Element {
   return (
     <div className="flex flex-col overflow-hidden pt-[40px] pb-[500px]">
       <ContainerScroll
