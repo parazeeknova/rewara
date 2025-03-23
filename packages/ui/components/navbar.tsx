@@ -66,8 +66,6 @@ function Navbar({ className }: { className?: string }) {
           </Link>
 
           <div className="flex items-center space-x-4">
-
-            
             <MenuItem setActive={setActive} active={active} item="Services">
               <div className="grid grid-cols-2 gap-10 p-4 text-sm">
                 <ProductItem
@@ -75,7 +73,6 @@ function Navbar({ className }: { className?: string }) {
                   href="https://algochurn.com"
                   src="https://assets.aceternity.com/demos/algochurn.webp"
                   description="1.Sales Analytics 2.Customer Behavior 3.Reward Metrics 4.Sentiment Analysis"
-                  
                 />
                 <ProductItem
                   title="Customer Loyalty & Rewards System"
@@ -97,7 +94,7 @@ function Navbar({ className }: { className?: string }) {
                 />
               </div>
             </MenuItem>
-            
+
             {status === 'authenticated' ? (
               <MenuItem
                 setActive={setActive}

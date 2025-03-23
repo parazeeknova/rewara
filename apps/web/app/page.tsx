@@ -88,7 +88,7 @@ function HeroScroll(): JSX.Element {
         <div className="relative flex w-full flex-col items-center justify-center rounded-md bg-background antialiased">
           <div className="mx-auto max-w-2xl p-4">
             <h1 className="relative z-10 bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-center font-bold font-sans text-lg text-transparent md:text-7xl">
-              B2B SaaS platform 
+              B2B SaaS platform
             </h1>
             <p className="relative z-10 mx-auto my-2 mt-5 max-w-200 text-center text-muted-foreground text-sm">
               Rewara is a powerful B2B SaaS platform that helps businesses
@@ -109,10 +109,7 @@ function HeroScroll(): JSX.Element {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-center space-y-4">
-          <div className="flex items-center gap-8">
-
-  
-          </div>
+          <div className="flex items-center gap-8"></div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-slate-600 text-sm dark:text-slate-400">
             <div className="flex items-center gap-2">
