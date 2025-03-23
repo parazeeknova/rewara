@@ -1,10 +1,10 @@
 import { ProtectedRoute } from '@rewara/auth/components/protected-route';
-import type { JSX, ReactNode } from 'react';
+import type React from 'react';
 
 export default function ProtectedLayout({
   children,
 }: {
-  children: ReactNode;
-}): JSX.Element {
+  children: React.ReactNode;
+}) {
   return <ProtectedRoute>{children}</ProtectedRoute>;
 }

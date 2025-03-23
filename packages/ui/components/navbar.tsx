@@ -1,9 +1,9 @@
 'use client';
 
-import { cn } from '@ui/lib/utils';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { cn } from '../lib/utils';
 import { HoveredLink, Menu, MenuItem, ProductItem } from './navbar-menu';
 
 export function NavbarAnimated() {

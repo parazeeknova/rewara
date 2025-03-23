@@ -12,7 +12,7 @@
   },
   "aliases": {
     "components": "@ui/shadui",
-    "utils": "@ui/lib/utils",
+    "utils": "../lib/utils",
     "hooks": "@ui/hooks",
     "lib": "@ui/lib",
     "ui": "@ui/shadui"
