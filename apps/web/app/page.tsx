@@ -88,7 +88,7 @@ function HeroScroll(): JSX.Element {
         <div className="relative flex w-full flex-col items-center justify-center rounded-md bg-background antialiased">
           <div className="mx-auto max-w-2xl p-4">
             <h1 className="relative z-10 bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-center font-bold font-sans text-lg text-transparent md:text-7xl">
-              Join the waitlist
+              B2B SaaS platform 
             </h1>
             <p className="relative z-10 mx-auto my-2 mt-5 max-w-200 text-center text-muted-foreground text-sm">
               Rewara is a powerful B2B SaaS platform that helps businesses
@@ -108,37 +108,10 @@ function HeroScroll(): JSX.Element {
           </div>
         </div>
 
-        <div className="mt-2 flex items-center justify-center gap-2">
-          <button
-            type="button"
-            className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-3 font-medium text-white shadow-blue-500/25 shadow-lg transition-shadow hover:shadow-blue-500/50"
-          >
-            Start Free Trial
-          </button>
-          <button
-            type="button"
-            className="rounded-full border border-slate-300 px-8 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800"
-          >
-            Book Demo
-          </button>
-        </div>
-
         <div className="mt-10 flex flex-col items-center justify-center space-y-4">
           <div className="flex items-center gap-8">
-            <div className="-space-x-2 flex">
-              {[...new Array(4)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-8 w-8 rounded-full border-2 border-white bg-slate-200 dark:border-black"
-                />
-              ))}
-            </div>
-            <p className="text-slate-600 text-sm dark:text-slate-400">
-              <span className="font-semibold text-slate-900 dark:text-white">
-                2,000+
-              </span>{' '}
-              businesses trust our platform
-            </p>
+
+  
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-slate-600 text-sm dark:text-slate-400">
