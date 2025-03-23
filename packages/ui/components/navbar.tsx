@@ -97,7 +97,9 @@ function Navbar({ className }: { className?: string }) {
 
             <MenuItem setActive={setActive} active={active} item="Dashboard">
               <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href="/dashboard">Dashboard</HoveredLink>
+                <HoveredLink href="https://customer-grid.zephyyrr.in">
+                  Dashboard
+                </HoveredLink>
               </div>
             </MenuItem>
 
