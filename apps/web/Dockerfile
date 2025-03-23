@@ -18,8 +18,7 @@ COPY packages/*/package.json ./packages/*/
 # Copy lockfile
 COPY pnpm-lock.yaml ./
 
-# Install with fallback to non-frozen
-RUN pnpm install --frozen-lockfile || pnpm install
+RUN pnpm install
 
 # Builder
 FROM base AS builder
