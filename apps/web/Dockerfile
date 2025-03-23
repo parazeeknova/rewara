@@ -26,6 +26,10 @@ COPY pnpm-lock.yaml ./
 # Install dependencies
 RUN pnpm install
 
+# Generate Prisma Client (moved here)
+WORKDIR /app/packages/db
+RUN npx prisma generate
+
 # Builder
 FROM base AS builder
 WORKDIR /app
@@ -33,23 +37,20 @@ WORKDIR /app
 # Copy all source files
 COPY . .
 
-# Copy node_modules from deps
+# Copy node_modules and generated prisma client from deps
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 COPY --from=deps /app/packages/*/node_modules ./packages/*/node_modules
-
-# Generate Prisma Client
-WORKDIR /app/packages/db
-RUN pnpm prisma generate
+COPY --from=deps /app/packages/db/node_modules/.prisma ./packages/db/node_modules/.prisma
 
 # Build the app
-WORKDIR /app
 RUN pnpm build --filter=web...
 
 # Runner
 FROM base AS runner
 WORKDIR /app
 
+ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
@@ -63,6 +64,9 @@ COPY --from=builder /app/apps/web/package.json ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+
+# Copy Prisma generated files
+COPY --from=deps /app/packages/db/node_modules/.prisma ./packages/db/node_modules/.prisma
 
 # Set permissions
 RUN mkdir .next && \
