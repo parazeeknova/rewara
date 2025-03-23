@@ -1,31 +1,14 @@
-# Dependencies
+.git
 node_modules
-.pnpm-store
 **/node_modules
-**/.pnpm-store
-
-# Next.js build outputs
 .next
-out
-dist
-build
 **/.next
-**/out
+out
+build
 **/dist
-**/build
-
-# Cache
+.env*
+.dockerignore
+Dockerfile
+README.md
 .turbo
 **/.turbo
-
-# Environment
-.env*
-**/.env*
-
-# Misc
-.DS_Store
-*.pem
-.git
-.gitignore
-README.md
-**/README.md

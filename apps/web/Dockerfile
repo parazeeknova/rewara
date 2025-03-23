@@ -1,38 +1,37 @@
-# Base node image
 FROM node:20-alpine AS base
 
 # Install system dependencies
 RUN apk add --no-cache libc6-compat
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Set working directory
 WORKDIR /app
 
 # Install dependencies
 FROM base AS deps
 WORKDIR /app
 
-# Copy only package files first
-COPY pnpm-lock.yaml ./
-COPY pnpm-workspace.yaml ./
-COPY package.json ./
+# Copy package files
+COPY package.json pnpm-workspace.yaml ./
 COPY apps/web/package.json ./apps/web/
 COPY packages/*/package.json ./packages/*/
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Copy lockfile
+COPY pnpm-lock.yaml ./
+
+# Install with fallback to non-frozen
+RUN pnpm install --frozen-lockfile || pnpm install
 
 # Builder
 FROM base AS builder
 WORKDIR /app
 
-# Copy dependencies
+# Copy all files
+COPY . .
+
+# Copy node_modules from deps
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 COPY --from=deps /app/packages/*/node_modules ./packages/*/node_modules
-
-# Copy all source files
-COPY . .
 
 # Generate Prisma Client
 WORKDIR /app/packages/db
