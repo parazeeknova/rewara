@@ -7,10 +7,7 @@ import type { JSX, ReactNode } from 'react';
 export function Providers({ children }: { children: ReactNode }): JSX.Element {
   return (
     <SessionProvider>
-      <DesignSystemProvider>
-        {/* @ts-expect-error */}
-        {children}
-      </DesignSystemProvider>
+      <DesignSystemProvider>{children}</DesignSystemProvider>
     </SessionProvider>
   );
 }
