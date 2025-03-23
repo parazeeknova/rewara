@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @import "@rewara/ui/styles/globals.css";
+
+html {
+  scroll-behavior: smooth;
+}
