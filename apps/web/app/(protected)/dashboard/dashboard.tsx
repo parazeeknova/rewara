@@ -1,9 +1,9 @@
 'use client';
 
+import CardSalesSummary from '@/components/card-sales-summary';
 import CardExpenseSummary from '@rewara/ui/components/cards/card-expense-summary';
 import CardPopularProducts from '@rewara/ui/components/cards/card-popular-products';
 import CardPurchaseSummary from '@rewara/ui/components/cards/card-purchase-summary';
-import CardSalesSummary from '@rewara/ui/components/cards/card-sales-summary';
 import StatCard from '@rewara/ui/components/cards/stat-card';
 import {
   CheckCircle,

@@ -13,11 +13,16 @@ git clone https://github.com/parazeeknova/rewara.git
 # Install dependencies
 pnpm i or pnpm install
 
-# Lint or format code
+# Lint or format code (optional)
 pnpm lint or pnpm format
+
+# Setup environment variables (development)
+pnpm run env:dev
 
 # Start the development server (docker)
 pnpm run docker:dev
+# Run prisma migrations
+pnpm run prisma:up
 
 # Copy envs to .env
 cp .env.example .env

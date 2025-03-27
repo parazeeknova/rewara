@@ -12,6 +12,10 @@
       "@ui/*": ["./*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../../apps/web/app/components/card-sales-summary.tsx"
+  ],
   "exclude": ["node_modules"]
 }
