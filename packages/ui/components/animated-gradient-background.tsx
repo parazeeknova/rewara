@@ -108,10 +108,16 @@ const AnimatedGradientBackground: React.FC<AnimatedGradientBackgroundProps> = ({
     let directionWidth = 1;
 
     const animateGradient = () => {
-      if (width >= startingGap + breathingRange) directionWidth = -1;
-      if (width <= startingGap - breathingRange) directionWidth = 1;
+      if (width >= startingGap + breathingRange) {
+        directionWidth = -1;
+      }
+      if (width <= startingGap - breathingRange) {
+        directionWidth = 1;
+      }
 
-      if (!Breathing) directionWidth = 0;
+      if (!Breathing) {
+        directionWidth = 0;
+      }
       width += directionWidth * animationSpeed;
 
       const gradientStopsString = gradientStops

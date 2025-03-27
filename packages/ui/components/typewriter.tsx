@@ -29,7 +29,9 @@ export function Typewriter({
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: We don't need to add `text` to the dependencies
   useEffect(() => {
-    if (!currentText) return;
+    if (!currentText) {
+      return;
+    }
 
     const timeout = setTimeout(
       () => {

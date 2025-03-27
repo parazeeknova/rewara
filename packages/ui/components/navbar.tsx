@@ -15,10 +15,7 @@ export function NavbarAnimated() {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
 
-      setVisible(
-        prevScrollPos > currentScrollPos || // Scrolling up
-          currentScrollPos < 10 // At the top
-      );
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
 
       setPrevScrollPos(currentScrollPos);
       setIsScrolled(currentScrollPos > 0);

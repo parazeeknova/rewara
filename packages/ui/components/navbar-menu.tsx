@@ -41,7 +41,7 @@ export const MenuItem = ({
   active,
   item,
   children,
-  showChevron = false, // Add this prop
+  showChevron = false,
 }: {
   setActive: (item: string) => void;
   active: string | null;
@@ -50,6 +50,7 @@ export const MenuItem = ({
   showChevron?: boolean;
 }) => {
   return (
+    // biome-ignore lint/nursery/noStaticElementInteractions: This is a temporary fix
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.div className="flex cursor-pointer items-center gap-1 text-black hover:opacity-[0.9] dark:text-white">
         <span>{item}</span>

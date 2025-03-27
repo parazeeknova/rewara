@@ -109,7 +109,7 @@ function HeroScroll(): JSX.Element {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-center space-y-4">
-          <div className="flex items-center gap-8"></div>
+          <div className="flex items-center gap-8" />
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-slate-600 text-sm dark:text-slate-400">
             <div className="flex items-center gap-2">

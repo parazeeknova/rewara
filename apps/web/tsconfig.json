@@ -3,8 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@root/*": ["./*"]
+      "@/*": ["./app/*"]
     }
   },
   "include": [
@@ -13,7 +12,9 @@
     "**/*.ts",
     "**/*.tsx",
     "./assets/**/*",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../packages/ui/components/rating.tsx",
+    "../../packages/ui/components/cards/stat-card.tsx"
   ],
   "exclude": ["node_modules"]
 }
