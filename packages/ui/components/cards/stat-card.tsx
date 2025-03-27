@@ -23,7 +23,7 @@ const StatCard = ({
 }: StatCardProps) => {
   const formatPercentage = (value: number) => {
     const signal = value >= 0 ? '+' : '';
-    return `${signal}${value.toFixed(0)}%`;
+    return `${signal}${value.toFixed(1)}%`;
   };
 
   const getChangeColor = (value: number) =>
@@ -35,23 +35,29 @@ const StatCard = ({
       <div>
         <div className="mb-2 flex items-center justify-between px-5 pt-4">
           <h2 className="font-semibold text-gray-700 text-lg">{title}</h2>
-          <span className="text-gray-400 text-xs">{dateRange}</span>
+          <span className="rounded-full bg-gray-50 px-2 py-1 text-gray-400 text-xs">
+            {dateRange}
+          </span>
         </div>
-        <hr />
+        <hr className="border-gray-100" />
       </div>
 
       {/* BODY */}
       <div className="mb-6 flex items-center justify-around gap-4 px-5">
-        <div className="rounded-full border-[1px] border-sky-300 bg-blue-50 p-5">
+        <div className="rounded-full border-[1px] border-blue-200 bg-blue-50 p-5 shadow-sm">
           {primaryIcon}
         </div>
         <div className="flex-1">
           {details.map((detail, index) => (
             <React.Fragment key={detail.title}>
               <div className="my-4 flex items-center justify-between">
-                <span className="text-gray-500">{detail.title}</span>
-                <span className="font-bold text-gray-800">{detail.amount}</span>
-                <div className="flex items-center">
+                <span className="font-medium text-gray-500">
+                  {detail.title}
+                </span>
+                <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text font-bold text-gray-800 text-transparent">
+                  {detail.amount}
+                </span>
+                <div className="flex items-center rounded-full bg-gray-50 px-2 py-1">
                   <detail.IconComponent
                     className={`mr-1 h-4 w-4 ${getChangeColor(
                       detail.changePercentage
@@ -67,7 +73,7 @@ const StatCard = ({
                   </span>
                 </div>
               </div>
-              {index < details.length - 1 && <hr />}
+              {index < details.length - 1 && <hr className="border-gray-100" />}
             </React.Fragment>
           ))}
         </div>

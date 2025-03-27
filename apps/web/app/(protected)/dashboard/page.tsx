@@ -5,7 +5,7 @@ import Dashboard from './dashboard';
 export default function DashboardPage(): JSX.Element {
   return (
     <ProtectedRoute>
-      return <Dashboard />
+      <Dashboard />
     </ProtectedRoute>
   );
 }

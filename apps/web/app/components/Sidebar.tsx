@@ -1,7 +1,6 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/redux';
-import { setIsSidebarCollapsed } from '@/state';
+import { useAppSelector } from '@/redux';
 import {
   BarChart,
   Book,
@@ -9,7 +8,6 @@ import {
   Clipboard,
   Layout,
   type LucideIcon,
-  Menu,
   MessageSquare,
   SlidersHorizontal,
   User,
@@ -38,17 +36,21 @@ const SidebarLink = ({
     <Link href={href}>
       <div
         className={`flex cursor-pointer items-center ${
-          isCollapsed ? 'justify-center py-4' : 'justify-start px-8 py-4'
-        }hover:text-blue-500 gap-3 transition-colors hover:bg-blue-100 ${
-          isActive ? 'bg-blue-200 text-white' : ''
-        }}`}
+          isCollapsed ? 'justify-center py-4' : 'justify-start px-6 py-3'
+        } mx-2 my-1 gap-3 rounded-md transition-all duration-200 hover:bg-blue-50 ${
+          isActive
+            ? 'bg-gradient-to-r from-blue-500 to-blue-400 font-medium text-white shadow-sm'
+            : 'text-gray-600 hover:text-blue-600'
+        }`}
       >
-        <Icon className="!text-gray-700 h-6 w-6" />
+        <Icon
+          className={`h-5 w-5 ${isActive ? 'text-white' : 'text-gray-500'}`}
+        />
 
         <span
           className={`${
             isCollapsed ? 'hidden' : 'block'
-          } font-medium text-gray-700`}
+          } font-medium transition-colors duration-200`}
         >
           {label}
         </span>
@@ -58,46 +60,34 @@ const SidebarLink = ({
 };
 
 const Sidebar = () => {
-  const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed
   );
 
-  const toggleSidebar = () => {
-    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
-  };
-
   const sidebarClassNames = `fixed flex flex-col ${
     isSidebarCollapsed ? 'w-0 md:w-16' : 'w-72 md:w-64'
-  } bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`;
+  } bg-gradient-to-b from-white to-blue-50 transition-all duration-300 overflow-hidden h-full shadow-lg z-40 border-r border-gray-100`;
 
   return (
     <div className={sidebarClassNames}>
       {/* TOP LOGO */}
       <div
-        className={`flex items-center justify-between gap-3 pt-8 md:justify-normal ${
-          isSidebarCollapsed ? 'px-5' : 'px-8'
+        className={`flex items-center justify-between gap-3 border-gray-100 border-b pt-6 pb-4 ${
+          isSidebarCollapsed ? 'px-3' : 'px-6'
         }`}
       >
-        <h1
-          className={`${
-            isSidebarCollapsed ? 'hidden' : 'block'
-          } font-extrabold text-2xl`}
-        >
-          Customer Grid
-        </h1>
-
-        <button
-          type="button"
-          className="rounded-full bg-gray-100 px-3 py-3 hover:bg-blue-100 md:hidden"
-          onClick={toggleSidebar}
-        >
-          <Menu className="h-4 w-4" />
-        </button>
+        <div className={`${isSidebarCollapsed ? 'hidden' : 'block'}`}>
+          <h1 className="bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text font-extrabold text-2xl text-transparent">
+            Rewara
+          </h1>
+          <p className="mt-0.5 text-gray-500 text-xs">
+            Reward Management Suite
+          </p>
+        </div>
       </div>
 
       {/* LINKS */}
-      <div className="mt-8 flex-grow">
+      <div className="mt-4 flex-grow px-2">
         <SidebarLink
           href="/dashboard"
           icon={Layout}
@@ -149,9 +139,11 @@ const Sidebar = () => {
       </div>
 
       {/* FOOTER */}
-      <div className={`${isSidebarCollapsed ? 'hidden' : 'block'} mb-10`}>
-        <p className="text-center text-gray-500 text-xs">
-          &copy; 2025 Customer Grid
+      <div
+        className={`${isSidebarCollapsed ? 'hidden' : 'block'} mt-auto mb-6 border-gray-100 border-t pt-4`}
+      >
+        <p className="px-4 text-center text-gray-400 text-xs">
+          &copy; 2025 Rewara Inc.
         </p>
       </div>
     </div>
