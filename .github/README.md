@@ -4,15 +4,26 @@ A B2B SaaS platform that provides businesses with a comprehensive dashboard to a
 
 ![b2b-saas](./assets//b2bsass.jpg)
 
+> [!NOTE]
+> Rewara is a hackathon project built under 6 hours. The project is not production-ready and lacks many features. Uses mock data for analytics and rewards. If i get time, i will implement the missing features.
+
 #### Screenshots
 
-| ![dashboard](./assets/dashboard.png)           | ![feedback](./assets/feedback.png)   |
-| ---------------------------------------------- | ------------------------------------ |
-| ![rewards](./assets/rewards.png)               | ![analytics](./assets/analytics.png) |
-| ![api-expanded](./assets/apidocs-expanded.png) | ![api](./assets/apidocs.png)         |
-| ![login](./assets/login.png)                   | ![signup](./assets/signup.png)       |
-| ![products](./assets/products.png)             | ![feedback](./assets/feedback.png)   |
-| ![landing](./assets/landing.png)               | ![settings](./assets/settings.png)   |
+| Dashboard                            | Rewards                          | Feedback                           |
+| ------------------------------------ | -------------------------------- | ---------------------------------- |
+| ![dashboard](./assets/dashboard.png) | ![rewards](./assets/rewards.png) | ![feedback](./assets/feedback.png) |
+
+| Analytics                            | API Docs Expanded                              | API Docs                     |
+| ------------------------------------ | ---------------------------------------------- | ---------------------------- |
+| ![analytics](./assets/analytics.png) | ![api-expanded](./assets/apidocs-expanded.png) | ![api](./assets/apidocs.png) |
+
+| Login                        | Signup                         | Settings                           |
+| ---------------------------- | ------------------------------ | ---------------------------------- |
+| ![login](./assets/login.png) | ![signup](./assets/signup.png) | ![settings](./assets/settings.png) |
+
+| Products                           | Landing                          |
+| ---------------------------------- | -------------------------------- |
+| ![products](./assets/products.png) | ![landing](./assets/landing.png) |
 
 #### Local Development
 
